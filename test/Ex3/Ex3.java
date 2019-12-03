@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Ex3{
 
 	public String ex3_0(int n){
@@ -150,56 +152,56 @@ public class Ex3{
 	}
 
 	public int ex3_11(int a, int b, int c){
-        int ret;
-        if (a <= b && a <= c) {
-            ret = a;
+        ArrayList<Integer> data = new ArrayList<Integer>();
+        int ret = c;
+        data.add(a);
+        data.add(b);
+        for (int i = 0; i < data.size(); i++) {
+            ret = Math.min(ret, data.get(i));
         }
-        else if (b <= a && b <= c) {
-            ret = b;
-        }
-        else if (c <= a && c <= b) {
-            ret = c;
-        }
-
         return ret;
+
     }
 
 	public int ex3_12(int a, int b, int c) {
-        int ret;
-        if (a <= b && b <= c) {
-            ret = b;
+        if (a >= b) {
+            if (b >= c) {
+                return b;
+            }
+            else if (a <= c) {
+                return a;
+            }
+            else {
+                return c;
+            }
         }
-        else if (b <= a && a <= c) {
-            ret = c;
+        else if (a > c) {
+            return a;
+        }
+        else if (b > c) {
+            return c;
         }
         else {
-            ret = c;
+            return b;
         }
-
-		return ret;
 	}
 
 	public String ex3_13(int a){
-        String ret = "";
-        if (a >= 1 && a <= 12) {
-            if ((a >= 1 && a < 3) && (a == 12)) {
-                ret = "冬";
-            }
-            else if (a >= 3 && a < 6) {
-                ret = "春";
-            }
-            else if (a >= 6 && a < 9) {
-                ret = "夏";
-            }
-            else if (a >= 9 && a < 12) {
-                ret = "秋";
-            }
+        if (a> 0 &&(a==12 || a<=2)) {
+			return "冬";
+		}
+		else if (a > 0 &&(3<=a && a<=5)) {
+			return "春";
+		}
+		else if (a > 0 &&(6<=a && a<=8)) {
+			return "夏";
+		}
+		else if (a > 0 &&(9<=a && a<=11)) {
+			return "秋";
+		}
+		else {
+			return "範囲(1～12)外の値です";
         }
-        else {
-            ret = "範囲(1～12)外の値です";
-        }
-
-		return ret;
 	}
 }
 
